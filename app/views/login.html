@@ -1,0 +1,24 @@
+<div class="container">
+    <ul class="login">
+        <li>
+            <h4>Sales Management app</h4></li>
+        <li>
+            <span>Username</span>
+            <span class="input-width">
+                <input type="text" class="form-control" ng-model="username">
+             </span>
+        </li>
+        <li>
+            <span>Password</span>
+            <span class="input-width">
+                <input type="password" class="form-control" ng-model="password">
+          </span>
+        </li>
+        <li ng-show="loginFailed" class="error">
+            Usernme or password is incorrect, please try again.
+        </li>
+        <li>
+            <span class="btn btn-primary input-width" ng-click="login()">Login</span>
+        </li>
+    </ul>
+</div>

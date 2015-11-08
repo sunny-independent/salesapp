@@ -1,0 +1,81 @@
+<div class="home">
+    <div class="header">
+        <div class="container">
+            <ul class="nav navbar-nav nav-ul">
+                <li>Hello {{username}}!</li>
+                <li class="logout" ng-click="logout()">Logout</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container content-section">
+        <ul class="drop-zone" dnd-list="blocks">
+            <li ng-repeat="item in blocks">
+                <ul ng-controller="BlockController" 
+                ng-if="blocks[$index].visible" dnd-draggable="item" 
+                dnd-moved="blocks.splice($index, 1)" ng-init="init($index)">
+                    <li class="header-box" ng-include="'headerBox'"></li>
+                    <li class="chart-box" ng-include="'chartBox'"></li>
+                    <li class="link-box" ng-include="'chartLinks'"></li>
+                </ul>
+                <ul ng-if="!blocks[$index].visible" ng-controller="BlockController" ng-init="init($index)">
+                    <li class="open-back"><a ng-click="openBack()">Open back</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/ng-template" id="headerBox">
+    <span>{{title}}</span>
+    <span><a ng-click="close()">Close</a></span>
+    <span><a ng-click="refresh()">Refresh</a></span>
+</script>
+
+<script type="text/ng-template" id="chartLinks">
+    <span><a ng-click="drawTop5Men()">Top 5 men</a></span>
+    <span><a ng-click="drawTop5Order()">Top 5 order</a></span>
+    <span><a ng-click="drawBar()">Bar</a></span>
+    <span><a ng-click="drawPie()">Pie</a></span>
+</script>
+
+<script type="text/ng-template" id="chartBox">
+    <div class="graph-box" ng-if="options != null">
+        <nvd3 options="options" data="data"></nvd3>
+    </div>
+    <div class="list-box" ng-if="topOrderList.length !=0 || topMenList.length !=0">
+        <table class="table" ng-if="topOrderList.length !=0">
+            <thead>
+                <tr>
+                    <th>Order no</th>
+                    <th>Username</th>
+                    <th>Value</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in topOrderList" ng-if="$index < 5">
+                    <th scope="row">{{item.orderNum}}</th>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.value}}</td>
+                    <td>{{item.qty}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table" ng-if="topMenList.length !=0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in topMenList" ng-if="$index < 5">
+                    <th scope="row">{{$index+1}}</th>
+                    <td>{{item[0]}}</td>
+                    <td>{{item[1]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</script>

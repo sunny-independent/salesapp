@@ -1,0 +1,110 @@
+Backend will start web server on localhost:8080.
+
+The following list of REST services that backend will expose.
+
+Login:
+
+Only Predefined users are allowed to login
+
+Predefined users:[Oswaldo, Mao, Angeline, Gerardo, Nicki,Test]
+
+Password should be same as user name
+
+If login succeeded response will have session id that will be used in the following requests.
+
+Examples:
+
+Request1: http://localhost:8080/login?username=Gerardo&password=Gerardo
+
+Response1: {"sessionId":"7d628a9d7722492f9c7ed56557555a44","loginSucceeded":true}
+
+ 
+
+Request2: http://localhost:8080/login?username=Gerardo1&password=Gerardo1
+
+Response2: {"sessionId":null,"loginSucceeded":false}
+
+
+
+Sales Total per Sales Man:
+
+Request should contains session id returned from login request
+
+Examples:
+
+Request1: http://localhost:8080/salesmandata?sessionid=7d628a9d7722492f9c7ed56557555a44
+
+Response1: {"resultDescription":"SUCCESS","data":[["Oswaldo","33702"],["Mao","32811"],["Angeline","12342"],["Gerardo","15297"],["Nicki","51954"],["Test","44697"]]}
+
+ 
+
+Request2: http://localhost:8080/salesmandata?sessionid=1111111111111111111111111111
+
+Response2: {"resultDescription":"User is not logged in","data":null}
+
+ 
+
+Sales Total per month:
+
+Request should contains session id returned from login request
+
+Examples:
+
+Request1: http://localhost:8080/lastyeardata?sessionid=7d628a9d7722492f9c7ed56557555a44
+
+Response1: {"resultDescription":"SUCCESS","data":[["JAN","1019008"],["FEB","1382276"],["MAR","1213444"],["APR","1477716"],["MAY","1359516"],["JUN","1324580"],["JUL","882815"],["AUG","855706"],["SEP","1360647"],["OCT","1272367"],["NOV","1462971"],["DEC","1026893"]]}
+
+ 
+
+Request2: http://localhost:8080/lastyeardata?sessionid=1111111111111111111111111111
+
+Response2: {"resultDescription":"User is not logged in","data":null}
+
+ 
+
+Top 5 Sales Oder:
+
+Request should contains session id returned from login request
+
+Examples:
+
+Request1: http://localhost:8080/topsalesorders?sessionid=7d628a9d7722492f9c7ed56557555a44
+
+Response1: {"resultDescription":"SUCCESS","data":[{"orderNum":"A000","userName":"Oswaldo","value":504.74,"qty":3.0},{"orderNum":"A001","userName":"Mao","value":529.17,"qty":6.0},{"orderNum":"A002","userName":"Angeline","value":553.6,"qty":9.0},{"orderNum":"A003","userName":"Gerardo","value":578.03,"qty":12.0},{"orderNum":"A004","userName":"Nicki","value":602.46,"qty":15.0}]}
+
+ 
+
+Request2: http://localhost:8080/topsalesorders?sessionid=1111111111111111111111111111
+
+Response2: {"resultDescription":"User is not logged in","data":null}
+
+ 
+
+Top 5 Sales Men:
+
+Request should contains session id returned from login request
+
+Examples:
+
+Request1: http://localhost:8080/topsalesmen?sessionid=7d628a9d7722492f9c7ed56557555a44
+
+Response1: {"resultDescription":"SUCCESS","data":[["Oswaldo","31673"],["Mao","30004"],["Angeline","29216"],["Gerardo","28368"],["Nicki","27797"]]}
+
+ 
+
+Request2: http://localhost:8080/topsalesmen?sessionid=1111111111111111111111111111
+
+Response2: {"resultDescription":"User is not logged in","data":null}
+
+ 
+
+Log out:
+
+Request should contains session id returned from login request
+
+Examples:
+
+Request1: http://localhost:8080/logout?sessionid=7d628a9d7722492f9c7ed56557555a44
+
+Response1: SUCCESS
+

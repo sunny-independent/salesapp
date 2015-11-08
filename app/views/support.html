@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h3 class="modal-title">Support</h3>
+</div>
+<div class="modal-body">
+     <div>Subject text<input type="text" class="form-control"></div>
+     <div>Details text<input type="text" class="form-control"></div>
+     <div ng-if="on" class="success-text">The request send successfully.</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">Send</button>
+    <button class="btn btn-primary" type="button" ng-click="cancel()">Close</button>
+</div>
