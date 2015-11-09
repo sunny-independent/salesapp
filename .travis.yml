@@ -17,3 +17,4 @@ script:
   npm install
   bower install
   grunt
+  #finished
