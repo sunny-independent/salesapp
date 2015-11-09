@@ -24,4 +24,4 @@ script:
   - ls
   - npm install
   - bower install
-  - grunt
+  - grunt --force
