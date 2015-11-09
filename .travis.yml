@@ -25,3 +25,8 @@ script:
   - npm install
   - bower install
   - grunt --force
+  deploy:
+  provider: heroku
+  api_key: 8932d5a7-d934-4e4f-bb88-c16eeb27e6d1
+  app: bibin-salesapp
+
