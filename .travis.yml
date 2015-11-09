@@ -15,7 +15,7 @@ script:
   - sudo apt-get install ruby-full
   - gem update --system
   - gem install compass
-  - npm install grunt-cli
+  - npm install -g grunt-cli
   - npm install bower
   - node --version
   - grunt --version
